@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repetições</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(255, 6, 6);
+        }
+        main {
+            width: 500px;
+            margin: auto;
+        }
+
+        section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        section#resultado {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="fomulário">
+            <h1>Contado Especial</h1>
+            <form action="salvar.php" method="get" onsubmit="return contador()">
+                <label for="ini"> Início</label>
+                <input type="number" name="ini" id="ini" value="0">
+                <br><label for="fim">Fim</label>
+                <input type="number" name="fim" id="fim" value="100">
+                <br><label for="inc">Incremento</label>
+                <input type="number" name="inc" id="inc" value="1">
+                <br><input type="submit" value="Contar">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2>Resultado</h2>
+            <p id="contagem"></p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        function contador() {
+            let ini = Number(document.getElementById("ini").value)
+            let fim = Number(document.getElementById("fim").value)
+            let inc = Number(document.getElementById("inc").value)
+
+            let res = document.getElementById("resultado")
+            let saida = document.getElementById("contagem")
+            res.style.visibility = "visible"
+
+            let c = ini
+            saida.innerHTML =  ""
+            while (c <= fim) {
+                saida.innerHTML += `${c} &#x1F449;`
+                c += inc
+            }
+            saida.innerHTML += `&#x1F3C1;`
+            return false
+        }
+    </script>
+</body>
+</html>
