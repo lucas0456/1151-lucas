@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: aquamarine;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>As 4 operações</h1>
+            <p>Escoclha dois números e qual vai ser operação aritmética</p>
+            <form action="x.php" method="get" onsubmit="return opera()">
+            <label for="va1">Valor 1</label>
+            <input type="number" name="va1" id="va1" min="0" max="10" value="0">
+            <label for="va2">Valor 2</label>
+            <input type="number" name="va2" id="va2" min="0" max="10" value="0">
+            <br>Operações disponíveis:
+            <ol>
+                <li>Adiçao</li>
+                <li>Subtração</li>
+                <li>Multuplicação</li>
+                <li>Divição</li>
+            </ol>
+            <br><label for="opc">Qual é a operação?</label>
+            <input type="number" name="opc" id="opc" min="1" max="4" value="1">
+            <input type="submit" value="Calcular">
+            </form>
+        </section>
+        <section id="saida">
+            <h2 id="titulo"></h2>
+            <p id="mensagem"></p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let tit = document.getElementById("titulo")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+        function fechar() {
+            saida.style.visibility = "hidden"
+        }
+        function opera() {
+            let va1 = Number(document.getElementById("va1").value)
+            let va2 = Number(document.getElementById("va2").value)
+            let opc = Number(document.getElementById("opc").value)
+            switch(opc) {
+                case 1:
+                    tit.innerHTML = `O somatório entre ${va1} e ${va2}.`
+                    msg.innerHTML = `O resultado ${va1} + ${va2} = ${va1 + va2}.`
+                    break
+                case 2:
+                    tit.innerHTML = `A subtração entre ${va1} e ${va2}.`
+                    msg.innerHTML = `O resultado ${va1} - ${va2} = ${va1 - va2}.`
+                    break
+                case 3:
+                    tit.innerHTML = `A multiplicaçaõ entre ${va1} e ${va2}.`
+                    msg.innerHTML = `O resultado ${va1} * ${va2} = ${va1 * va2}.`
+                    break
+                case 4:
+                    tit.innerHTML = `A divição entre ${va1} e ${va2}.`
+                    if (va2 == 0) {
+                    msg.innerHTML = `Não é possível dividi por zero.`
+                    }else {    
+                    msg.innerHTML = `O resultado ${va1} / ${va2} = ${va1 / va2}.`
+                    }
+                    break
+                default:
+                    tit.innerHTML = `Opção invalida.`
+                    msg.innerHTML = `A sua opção de operação não existe. Tente novamente.`
+            }
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

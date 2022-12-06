@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Um vetor simples</h1>
+    <button onclick="mostrar()">Mostrar o vetor</button>
+    <p id="mensagem">O resultado vai aparecer aqui...</p>
+    <script>
+        let vet = new Array(22, 36, 84, 12, 45)
+        let msg = document.getElementById("mensagem")
+        function mostrar() {
+            let tam = vet . length
+            let pos = 0
+            msg.innerHTML = ""
+            while(pos < tam) {
+                msg.innerHTML += `<br>Na posição ${pos}, temos o valor ${vet[pos]}`
+                pos ++
+            }
+            msg.innerHTML += `<hr>O vetor tem ${tam} ao todo.`
+        }
+    </script>
+</body>
+</html>

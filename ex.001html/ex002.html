@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de Financiamento de carros</title>
+</head>
+<body>
+    <main>
+        <h1>Calculadora de financiamento de carro</h1>
+        <form action="" onsubmit="return carro()">
+         <label for="carro">Qual é o modelo do carro?</label>
+         <input type="text" name="carro" id="carro">
+         <br>
+         <label for="preco">Qual é o preço total?</label>
+         <input type="number" name="preco" id="preco">
+         <br>
+         <label for="parcelas">Qual a quantidade de parcelas?</label>
+         <input type="number" name="parcelas" id="parcelas">
+         <br>
+         <input type="submit" value="Calcular">
+        </form>
+    </main>
+    <script>
+            function carro() {
+            window.alert("Funcionou")
+            return false
+            }
+    </script>
+</body>
+</html>

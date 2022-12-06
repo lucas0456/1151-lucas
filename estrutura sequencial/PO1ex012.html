@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="formulário">
+            <form action="m.php" method="get" onsubmit="return média()">
+            <h1>Controle de média do aluno</h1>
+            <br><label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome">
+
+            <br><label for="n1">Nota 1</label>
+            <input type="number" name="n1" id="n1" min="0" max="10" value="5" step="0.5">
+
+            <br><label for="n2">Nota 2</label>
+            <input type="number" name="n2" id="n2" min="0" max="10" value="5" step="0.5">
+
+            <input type="submit" value="Calcular média">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2>Resultado</h2>
+            <p id="resul">resultado...</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+        <script>
+            let res = document.getElementById("resultado")
+            let resul = document.getElementById("resul")
+            function fechar() {
+                res.style.visibility = "hidden"
+            }
+            function média() {
+                let nome = document.getElementById("nome").value
+                let n1 = Number(document.getElementById("n1").value)
+                let n2 = Number(document.getElementById("n2").value)
+                let med = (n1+n2)/2
+                resul.innerHTML = `O aluno ${nome} vai ter média ${med}`
+                res.style.visibility = "visible"
+                return false
+            }
+        </script>
+</body>
+</html>

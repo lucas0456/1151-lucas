@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1 id="mesg">Mesagem</h1>
+        <p id="fr">Hora atual</p>
+    </main>
+    <script>
+        let mesg = document.getElementById("mesg")
+        let fr = document.getElementById("fr")
+        let calend = new Date()
+        let hora = calend.getHours()
+        let minu = calend.getMinutes()
+        let seg = calend.getSeconds()
+        fr.innerHTML = `Agora são ${hora} horas, ${minu} minutos`
+
+        let corfundo = ""
+        let corletra = ""
+
+        if (hora >= 5 && hora < 12) {
+            mesg.innerHTML = "Bom dia"
+            corfundo = "blue"
+            corletra = "yellow"
+        } else if (hora >= 12 && hora < 18) {
+            mesg.innerHTML = "Boa tarde"
+            corfundo = "orangered"
+            corletra = "yellow"
+        } else if (hora >= 18 && hora < 23) {
+            mesg.innerHTML = "Boa noite"
+            corfundo = "black"
+            corletra = "white"
+        } else if (hora >= 23 && hora < 5) {
+            mesg.innerHTML = "Boa madrugada"
+            corfundo = "gray"
+            corletra = "white"
+        }
+        document.body.style.backgroundColor = corfundo
+        mesg.style.color = corletra
+        fr.style.color = corletra
+    </script>
+</body>
+</html>

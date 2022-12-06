@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Trabalhado com números</h1>
+        <button onclick="o()">Me diga dois números</button>
+        <p id="resul">O resultado vai aperecer aqui...</p>
+    </main>
+    <script>
+        let resul = document.getElementById("resul")
+        function o() {
+            let n1 = Number(prompt("Digite o primeiro número"))
+            let n2 = Number(prompt("Digite o segundo número"))
+            let s = n1 + n2
+            resul.innerHTML = `A soma dos dois números é ${s}`
+        }
+    </script>
+</body>
+</html>

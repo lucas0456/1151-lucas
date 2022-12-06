@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: violet;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Primos até 1000</h1>
+            <button onclick="primos()">Mostre os primos</button>
+        </section>
+        <section id="saida">
+            <h2>Os números prmos até 1000 são</h2>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let msg = document.getElementById("mensagem")
+        function primos() {
+            let num = 2
+            let primo = true 
+            let cont = 0
+            while(num <= 1000) {
+                primo = true
+                cont = 2
+                while(cont < num) {
+                    if(num % cont == 0) {
+                        primo = false
+                        break
+                    }
+                    cont ++
+                }
+                if(primo) {
+                    msg.innerHTML += `${num} &#x2192;`
+                }
+                num ++
+            }
+            msg.innerHTML += `&#x1F3C1;`
+        }
+    </script>
+</body>
+</html>

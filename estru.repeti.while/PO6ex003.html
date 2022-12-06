@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: steelblue;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Leitura de texto válido</h1>
+            <p>O nome será aceito se ter mais de 5 letras.</p>
+            <button onclick="iniciar()">Iniciar</button>
+        </section>
+        <section id="saida">
+            <h2>Resultado</h2>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let msg = document.getElementById("mensagem")
+        function iniciar() {
+            let nome 
+            do{
+                nome = prompt("Digite um nome")
+                if(nome.trim() === "") {
+                    alert("Você não pode deixar em branco")
+                } else if(!isNaN(nome)) {
+                    alert("É pra digita um nome e não um número")
+                } else if(nome.length < 5) {
+                    alert("O nome tem que ter no mínimo 5 letras")
+                } else {
+                    break
+                }
+            } while(true)
+            msg.innerHTML = `O nome ${nome} foi registrado com sucesso.`
+        }
+    </script>
+</body>
+</html>

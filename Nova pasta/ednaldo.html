@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ednaldo Pereira</title>
+    <style>
+        body{
+            background-color: blueviolet;
+            text-align: center;
+            
+        }
+        main {
+            background-color: white;
+            border-radius: 15px;
+            height: 400px;
+            width: 600px;
+            text-align: center;
+            margin: auto;
+        }
+        button#desbanido {
+            background-color: #09ff00;
+            border-radius: 17px;
+            text-align: center;
+            height: 40px;
+        }
+        button#banido{
+            background-color: red;
+            border-radius: 17px;
+            text-align: center;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="butão">
+        <h1>Banido ou Desbanido</h1>
+        <button onclick="banido()" id="banido">Banido</button>
+        <button onclick="desbanido()" id="desbanido">Desbanido</button>
+        <p></p>
+        <img src="download (1).jpg" alt="">
+        </section>
+        <section id="resultado">
+            <p id="f">você vai ser banido ou desbanido?</p>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        function banido() {
+            let banido = document.getElementById("banido")
+            res.style.visibility = "visible"
+            res.innerHTML = `você foi banido`  
+        } function desbanido() {
+            let desbanido = document.getElementById("desbanido")
+            res.style.visibility = "visible"
+            res.innerHTML = `você foi desbanido`
+            
+        }
+    </script>
+</body>
+</html>

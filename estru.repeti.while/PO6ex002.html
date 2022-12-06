@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: yellowgreen;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Leitura de número válido</h1>
+            <p>O número precisa está entre 0 a 10.</p>
+            <button onclick="iniciar()">Iniciar</button>
+        </section>
+        <section id="saida">
+            <h2>Resultado</h2>
+            <p id="resultado">O resultado vai aparecer aqui...</p>
+        </section>
+    </main>
+    <script>
+        let res= document.getElementById("resultado")
+        function iniciar() {
+            let num, valor
+            do {
+                num = prompt("Digite um número entre 0 e 10").trim()
+                valor = Number(num)
+                if (num == "") {
+                    alert("Não pode deixa a caixa em branco") 
+                } else if (isNaN(num)) {
+                    alert("Tem que escrever um número, e não palavras")
+                } else if (valor < 0 || valor > 10) {
+                    alert("O número tem que está entre 0 e 10")
+                } else if (valor >= 0 || valor <= 10) {
+                    break
+                }
+            } while(true)
+            res.innerHTML = `O valor ${valor} foi registrado com sucesso.` 
+        }
+    </script>
+</body>
+</html>

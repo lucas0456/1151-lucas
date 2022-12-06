@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Analsador de triângulo</h1>
+            <p>Informe o comprimento dos três segmentos de reta e o proprio sistema vai identificar se elas podem formar um triângulo</p>
+            <form action="q.php" method="get" onsubmit="return tri()">
+            <label for="seg1">Segmento1</label>
+            <input type="number" name="seg1" id="seg1" min="0" max="100" value="0">cm
+            <label for="seg2">Segmento2</label>
+            <input type="number" name="seg2" id="seg2" min="0" max="100" value="0">cm
+            <label for="seg3">Segmento3</label>
+            <input type="number" name="seg3" id="seg3" min="0" max="100" value="0">cm
+            <input type="submit" value="Verificar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Resposta</h2>
+            <p id="mensagem"></p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+        function fechar() {
+            saida.style.visibility = "hidden"
+        }
+        function tri() {
+            let s1 = Number(document.getElementById("seg1").value)
+            let s2 = Number(document.getElementById("seg2").value)
+            let s3 = Number(document.getElementById("seg3").value)
+            msg.innerHTML = `Os segmentos do comprimento ${s1}, ${s2} e ${s3}`
+            if (s1 < s2 + s3 && s2 < s1 + s3 && s3 < s1 + s2) {
+                msg.innerHTML += `podem forma um triângulo`
+                if( s1 == s2 && s2 == s3 && s3 == s1) {
+                    msg.innerHTML += `Equilátero`
+                } else if (s1 != s2 && s1 != s3 && s3 != s2) {
+                    msg.innerHTML += `Escaleno`
+                } else {
+                    msg.innerHTML += `Isósceles`
+                }
+            } else {
+                msg.innerHTML += `Não permitem formar um triângulo`
+            }
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

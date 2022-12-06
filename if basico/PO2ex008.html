@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="ll">
+            <h1>Programa Bolsa familiar</h1>
+            <p>O Programa Bolsa Familiar(PBF) é um programa de transferência de rende do Governo Federal.
+                Consiste na ajuda financeira ás familias pobres que possuem renda per capita de R$89,00 a R$178,00 que tenham em sua composição gestantes e crinças ou adolescentes entre 0 a 17 anos e extremamente pobres(com a renda per capita até R$89,00).
+            </p>
+            <form action="a.php" method="get" onsubmit="return bol()">
+            <h1>Posso participar do PBF?</h1>
+            <label for="renda">Renda total: R$</label>
+            <input type="number" name="renda" id="renda" min="0" max="20000" value="1100" step=".5">
+
+            <br><label for="fam">Membros na famalía</label>
+            <select name="fam" id="fam">
+                <option value="1">um</option>
+                <option value="2">dois</option>
+                <option value="3">três</option>
+                <option value="4">quatro</option>
+                <option value="5">cinco</option>
+                <option value="6">seis</option>
+                <option value="7">sete</option>
+                <option value="8">oito</option>
+                <option value="9">nove</option>
+                <option value="10">dez</option>
+            </select>membro(s)
+            
+            <input type="submit" value="Verificar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Avaliação PBF</h2>
+            <p id="re">Resultado...</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let re = document.getElementById("re")
+        saida.style.visibility = "hidden"
+        function fechar() {
+            saida.style.visibility = "hidden"
+        }
+        function bol() {
+            let renda = Number(document.getElementById("renda").value)
+            let membro = Number(document.getElementById("fam").value)
+            let per = renda/membro
+            saida.style.visibility = "visible"
+            re.innerHTML = `Um família com ${membro} integrantes e que recebe R$${renda} por mês,tem <strong>renda per capita de R$${per}</strong> e por conta disso`
+            if(per == 180){
+                re.innerHTML += `<span class= 'sim'> tem direito ao Bolsa Família</span>.`
+            } else {
+                re.innerHTML += `<span class= 'nao'> não tem direito ao Bolsa Família</span>.`
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

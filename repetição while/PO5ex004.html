@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contador especial</h1>
+    <p>O site te pergutar aonde começa e terminar.</p>
+    <button onclick="contar()">Aperte aqui</button>
+    <p id="numeros">Acontagem vai aparecer aqui...</p>
+    <script>
+        function contar() {
+            let num = document.getElementById("numeros")
+            num.innerHTML = ``
+            let início = Number(prompt("A contagem começar em..."))
+            let fim = Number(prompt("A contagem terminar em..."))
+            let n = início
+            while (n <= fim){
+                num.innerHTML += `${n} &#x2192`
+                n ++
+            }
+            num.innerHTML += `fim`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Data e Hora</h1>
+        <button onclick="ap()">Aperte aqui</button>
+        <p id="que">A datan e hora vão aparecer aqui...</p>
+    </main>
+    <script>
+        let que = document.getElementById("que")
+        function ap() {
+            let calend = new Date()
+            que.innerHTML = `Dia: ${calend.getDate()}`
+            que.innerHTML += `<br>Mês: ${calend.getMonth() + 1}`
+            que.innerHTML += `<br>Ano: ${calend.getFullYear()}`
+            que.innerHTML += `<br>Dia da semana: ${calend.getDay()}`
+            que.innerHTML += `<br>Horas: ${calend.getHours()}`
+            que.innerHTML += `<br>Minutos: ${calend.getMinutes()}`
+            que.innerHTML += `<br>Segundos: ${calend.getSeconds()}`
+            que.innerHTML += `<br>Mile segundos: ${calend.getMilliseconds()}`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Contado de 1 até 10 </h1>
+            <p>Aperte o botão a seguir e o computador vai mostra uma contagem que vai de 1 até 10.</p>
+            <button onclick="contar()">Aperte aqui</button>
+            <p id="numeros">A conta vai aparecer aqui...</p>
+            <script>
+                function contar() {
+                let num = document.getElementById("numeros")
+                num.innerHTML = ``
+                let n = 1
+                while (n <= 10) {
+                    num.innerHTML += `${n} &#x2192`
+                    n ++
+                }
+                num.innerHTML += `fim`
+            }
+            </script>
+</body>
+</html>

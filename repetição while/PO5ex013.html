@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: aquamarine;
+        } main {
+            margin: auto;
+            max-width: 500px;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Média de idade do grupo</h1>
+            <form action="z.php" method="get" onsubmit="return idades()">
+            <label for="pess">Total de pessoas</label>
+            <input type="number" name="pess" id="pess" min="1" max="10" value="5">
+            <input type="submit" value="Iniciar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2 id="titulo"></h2>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let tit = document.getElementById("titulo")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+        function idades() {
+            let pess = Number(document.getElementById(`pess`).value)
+
+            let idade = 0
+            let soma = 0
+            let média = 0
+
+            let cont = 1
+            while(cont <= pess) {
+                idade = Number(prompt(`Idade da ${cont} a pessoa`))
+                soma += idade
+                cont ++
+            }
+            média = soma / pess
+            tit.innerHTML = `${pess} pessoas cadastradas`
+            msg.innerHTML = `No grupo de ${pess} pessoas cadastradas, a média de idade do grupo é de ${média.toFixed(1)}.`
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

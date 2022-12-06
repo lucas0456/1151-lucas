@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: indigo;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Progressão de aritmética crescente</h1>
+            <form action="a.php" method="get" onsubmit="return aa()">
+            <br><label for="num1">Primeiro termo(a1)</label>
+            <input type="number" name="num1" id="num1" min="1" max="100" value="1">
+            <br><label for="num2">Quantidade de elementos</label>
+            <input type="number" name="num2" id="num2" min="1" max="100" value="10">
+            <br><label for="num3">Razão(q)</label>
+            <input type="number" name="num3" id="num3" min="1" max="100" value="1">
+            <br><button onclick="Mostra()">Mostra PA</button>
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Mostrando a P.A.</h2>
+            <p id="mensagem"></p>
+        </section>
+        <script>
+            let msg = document.getElementById("mensagem")
+            function aa() {
+                let a1 = Number(document.getElementById("num1").value)
+                let q = Number(document.getElementById("num2").value)
+                let r = Number(document.getElementById("num3").value)
+                msg.innerHTML = `Mostrando a P.A. com ${q} elementos, começando com ${a1} e com razão ${r}: <hr>`
+                let elemento = a1
+                for(let cont = 1; cont <= q; cont ++) {
+                    msg.innerHTML += `Elemento n<sup>o</sup>${cont} &#x2192; ${elemento}<br>`
+                    elemento += r
+                }
+                msg.innerHTML += `<hr>fim P.A.`
+                return false
+            }
+        </script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="aaa">
+            <h1>Ano bissexto</h1>
+            <p>Anos bissexto são aqueles anos que fazem parte do gregoriano(a partir de 1582) e possuem um dia a mais(o dia 29 de fevereiro). A regra para descobrir se o ano é bissexto são:</p>
+            <p>1. De 4 em 4 anos é ano bissexto(ex: 1992, 2000 e 2012).</p>
+            <p>2. De 100 em 100 anos não são ano bissexto(ex: 1900).</p>
+            <p>3. De 400 em 400 anos é anos bissexto(ex: 1600 e 2400).</p>
+            <p>4. Prevalecem as últimas regras sobre as primeiras.</p>
+
+            <h2>Verificar se o ano é bissexto</h2>
+            <form action="s.php" method="get" onsubmit="return bisi()">
+            <label for="ano">Ano</label>
+            <input type="number" name="ano" id="ano" min="1582" max="2021" value="2021">
+            <input type="submit" value="Verificar">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2>Resultado</h2>
+            <p id="a">Resultado</p>
+        </section>
+    </main>
+    <script>
+        let resultado = document.getElementById("resultado")
+        let a = document.getElementById("a")
+        resultado.style.visibility = "hidden"
+        function bisi() {
+            let ano = Number(document.getElementById("ano").value)
+            if((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+                a.innerHTML = `O ano ${ano} é bissexto`
+            } else {
+                a.innerHTML = `O ano ${ano} não é bissexto`
+            }
+            resultado.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

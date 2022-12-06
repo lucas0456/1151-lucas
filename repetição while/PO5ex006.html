@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Contador inteligente com formulário</h1>
+            <form action="v.php" method="get" onsubmit="return contar()">
+            <br><label for="inicio">Contagem vai começa em</label>
+            <input type="number" name="inicio" id="inicio" min="-100" value="0" max="100">
+            <br><label for="fim">Contagem vai termina em</label>
+            <input type="number" name="fim" id="fim" min="-100" max="100" value="0">
+            <br><label for="passo">Qual vai ser o salto?</label>
+            <input type="number" name="passo" id="passo" min="1" max="10" value="1">
+            <br><input type="submit" value="Contar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Contar</h2>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+        function contar() {
+            let ini = Number(document.getElementById("inicio").value)
+            let fim = Number(document.getElementById("fim").value)
+            let passo = Number(document.getElementById("passo").value)
+            if(passo == 0) { passo = 1}
+            if(passo < 0) { passo *= -1}
+            msg.innerHTML = `A contagem de ${ini} até ${fim} com salto ${passo}: <br><br>`
+            if(ini < fim) {
+                let cont = ini
+                while(cont <= fim){
+                    msg.innerHTML += `${cont} &#x1F449;`
+                    cont ++
+                }
+            } else if(ini > fim) {
+                let cont = ini
+                while(cont >= fim){
+                    msg.innerHTML += `${cont} &#x1F449;`
+                    cont --
+                }
+            }
+            msg.innerHTML += `&#x1F3c1;`
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

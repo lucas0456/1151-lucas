@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="tabu()">
+    <main>
+        <section id="entrada">
+            <h1>Gerador de tabuada</h1>
+            <form action="z.php" method="get" onsubmit="return tabu()">
+            <label for="num">Mostrar tabuada do número</label>
+            <input type="number" name="num" id="num" min="1" max="10" value="5">
+            <input type="submit" value="Mostrar tabuada">
+            </form>
+        </section>
+        <section id="saida">
+            <h2 id="titulo">tabuada</h2>
+            <p id="mensagem">tabuada</p>
+        </section>
+    </main>
+    <script>
+        let tit = document.getElementById("titulo")
+        let msg = document.getElementById("mensagem")
+        function tabu() {
+            let n = Number(document.getElementById("num").value)
+            tit.innerHTML = `Tabuada do número ${n}`
+            msg.innerHTML = ``
+            let c = 1
+            while(c <= 10) {
+                msg.innerHTML += `${n} x ${c} = ${n * c}<br>`
+                c ++
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

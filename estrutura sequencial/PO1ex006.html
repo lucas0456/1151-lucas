@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: blue;
+            margin: auto;
+            text-align: center;
+            height: 400px;
+        } main {
+            background-color: white;
+            margin: auto;
+            text-align: center;
+            max-width: 600px;
+            border-radius: 16px;
+        } section {
+            background-color: white;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 16px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="botões">
+        <h1>Interaja com os butões</h1>
+        <button onclick="but()">Esconder</button>
+        <button onclick="bot()">Exibir</button>
+        </section>
+        <section id="resultado">
+            <h2>Caixa especial</h2>
+        </section>
+    </main>
+    <script>
+
+        let res = document.getElementById("resultado")
+
+        function but() {
+            res.style.visibility = "hidden"
+        } 
+        function bot() {
+            res.style.visibility = "visible"
+        }
+    </script>
+</body>
+</html>

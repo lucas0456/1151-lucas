@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: cadetblue;
+        } main {
+            max-width: 600px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        } section#saida {
+            font-size: 0.6em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Construido uma pirâmide</h1>
+            <form action="ç.php" method="get" onsubmit="return pira()">
+            <label for="mide">Quantos andares a pirâmide vai ter?</label>
+            <input type="number" name="mide" id="mide" min="1" max="30" value="5">
+            <input type="submit" value="Construir">
+            </form>
+        </section>
+        <section id="saida">
+            <p id="msg"></p>
+        </section>
+    </main>
+    <script>
+        let msg = document.getElementById("msg")
+
+        function pira() {
+            let total = Number(document.getElementById("mide").value)
+            msg.innerHTML = ""
+            let andar = 1
+            let simbolos = 1
+            let cont = 1
+            while(andar <= total) {
+                while(cont <= simbolos) {
+                    msg.innerHTML += `#`
+                    cont ++
+                }
+                msg.innerHTML +=  `<br>`
+                simbolos += 2
+                cont = 1
+                andar ++
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

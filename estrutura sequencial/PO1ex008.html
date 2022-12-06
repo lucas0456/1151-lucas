@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+    <section id="formulário">
+    <h1>Informe os dois números</h1>
+    <form action="queijo.php" method="get" onsubmit="return jj()">
+    <label for="n1">número 1</label>
+    <input type="number" name="n1" id="n1" min="1" max="100" value="1">
+
+    <label for="n2">número 2</label>
+    <input type="number" name="n2" id="n2" min="1" max="100" value="1">
+
+    <input type="submit" value="Calcular">
+    </form>
+    </section>
+    <section id="resultado">
+        <h2>Analisado números</h2>
+        <p id="re">Resultado final</p>
+        <button onclick="fechar()">Fechar</button>
+    </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        let re = document.getElementById("re")
+        re.style.visibility = "hidden"
+
+        function jj() {
+            let n1 = Number(document.getElementById("n1").value)
+            let n2 = Number(document.getElementById("n2").value)
+            re.style.visibility = "visible"
+            re.innerHTML = `O úsuario informou os números ${n1} e ${n2}:`
+            re.innerHTML += `${n1} + ${n2} = ${n1+n2}`
+            re.innerHTML += `${n1} - ${n2} = ${n1-n2}`
+            re.innerHTML += `${n1} * ${n2} = ${n1*n2}`
+            re.innerHTML += `${n1} / ${n2} = ${n1/n2}`
+            return false
+        }
+    </script>
+</body>
+</html>

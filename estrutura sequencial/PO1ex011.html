@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: blueviolet;
+        } main {
+            max-width: 550px;
+            margin: auto
+        } section {
+            background-color: white;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 15px;
+        } section#resultado {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="dis()">
+            <form action="oo.php" method="get" onsubmit="return cal()">
+            <h1>Calculadora de desconto</h1>
+            <br><label for="nome">Nome do produto</label>
+            <input type="text" name="nome" id="nome">
+
+            <br><label for="numb">Preço R$</label>
+            <input type="number" name="numb" id="numb" min="0.50" max="10000" value="1" step="0.50">
+
+            <br><label for="des">Desconto</label>
+            <select name="des" id="des">
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+                <option value="20">20%</option>
+                <option value="25">25%</option>
+                <option value="30">30%</option>
+            </select>
+
+            <br><input type="submit" value="Calcular">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2>Resultado</h2>
+            <p id="fra">Resultado...</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        let fra = document.getElementById("fra")
+
+        function fechar() {
+            res.style.visibility = "hidden"
+        }
+        function cal() {
+            let nome = document.getElementById("nome").value
+            let numb = Number(document.getElementById("numb").value)
+            let des = Number(document.getElementById("des").value)
+
+            let noo = numb * des/100
+            let novo = numb - noo
+
+            fra.innerHTML = `O ${nome}, que custava R$${numb}, com ${des}% de desconto vai abaixar R$${noo}  e vai passar a custar R$${novo}.`
+            res.style.visibility = "visible" 
+            return false
+        }
+    </script>
+</body>
+</html>

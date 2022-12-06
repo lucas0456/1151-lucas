@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="jogador">
+            <h1>Vamos jogar Par ou Ímpar?</h1>
+            <form action="z.php" method="get" onsubmit="return jogo()">
+                <label for="num">Quantos dedos você vai amostra?</label>
+                <select name="num" id="num">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            <fieldset>
+                <legend>Escolha uma opção</legend>
+                <input type="radio" name="opc" id="par" checked>
+                <label for="par">Par</label>
+                <br><input type="radio" name="opc" id="imp" checked>
+                <label for="imp">Ímpar</label>
+            </fieldset>
+            <input type="submit" value="jogar" id="botao">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2>Analisando as jogadas</h2>
+            <p id="f1">análise...</p>
+            <h2>Resultado final</h2>
+            <p id="f2">aqui vai aperecer o resultado</p>
+            <button onclick="reset()">jogar de novo</button>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        let btn = document.getElementById("botao")
+        let opc = document.getElementsByName("opc")
+        let f1 = document.getElementById("f1")
+        let f2 = document.getElementById("f2")
+        res.style.visibility = "hidden"
+        function jogo() {
+            let p1opc = ""
+            let p2opc = ""
+            let p1num = Number(document.getElementById("num").value)
+            if (opc[0].checked) {
+                p1opc = "par"
+                p2opc = "imp"
+            } else if (opc[1].checked) {
+                p1opc = "imp"
+                p2opc = "par"
+            }
+
+        
+        let p2num = Math.floor(Math.random() * 5 + 0)
+        f1.innerHTML = `Você mostrou ${p1num} dedos e ficou com opção ${p1opc}`
+        f2.innerHTML += `O coputador mostrou ${p2num} dedos e ficou com opção ${p2opc}`
+
+        let total = p1num + p2num
+        let final = ""
+        f2.innerHTML = `Tivemos um total de ${total} dedos`
+        if (total % 2 == 0) {
+            final = "par"
+        } else {
+            final = "imp"
+        }
+        if (final == p1opc) {
+            f2.innerHTML += `Parabéns! Você ganhou!`
+        } else {
+            f2.innerHTML += `O computador ganhou!`
+        }
+        res.style.visibility = "visible"
+        return false
+    }
+    function reset() {
+        res.style.visibility = "hidden"
+    }
+    </script>
+</body>
+</html>

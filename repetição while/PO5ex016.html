@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.1em;
+            background-color: crimson;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Número primo</h1>
+            <form action="j.php" method="get" onsubmit="return primo()">
+            <label for="num">O número</label>
+            <input type="number" name="num" id="num" min="0" max="100" value="5">
+            <input type="submit" value="É primo?">
+            </form>
+        </section>
+        <section id="saida">
+            <h2 id="titulo"></h2>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let tit = document.getElementById("titulo")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+        function primo() {
+            let num = Number(document.getElementById("num").value)
+            tit.innerHTML = `Analisado o número ${num}`
+            msg.innerHTML = `O número ${num} é divisível`
+
+            let cont = 1
+            let div = 0
+            while(cont <= num) {
+                if(num % cont == 0) {
+                    msg.innerHTML += `por <mark>&nbsp;${cont}&nbsp;</mark>`
+                    div ++
+                }
+                cont ++
+            }
+            msg.innerHTML += `. É já que ele tem ${div} divisores, `
+            if(div == 2) {
+                msg.innerHTML += `é um número primo`
+            } else {
+                msg.innerHTML += `não é um número primo`
+            }
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

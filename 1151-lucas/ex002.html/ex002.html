@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <style>
+        body{
+           margin: auto;
+           border-radius: 15px;
+           background-color: hsl(240, 100%, 50%);
+           width: 600px;
+        } main{
+            border-radius: 15px;
+            background-color: white;
+            text-align: center;
+            height: 250px;
+        }
+    </style> 
+<main>
+    <h1>Salários de Funcionários</h1>
+    <form action="queijo.php" onsubmit="return funcionário()">
+    <label for="funcionários">Quantos funcionários serão cadastrados?</label>
+    <input type="number" name="fun" id="fun" min="1" max="35" value="">
+    <br>
+    <input type="submit" value="Iniciar" id="button">
+    </form>
+    <section>
+    <h3>O resultado vai aparece aqui...</h3>
+    <p id="result"></p>
+    </section>
+</main>
+<script>
+    function funcionário() {
+        let res = document.getElementById("result")
+        let func = Number(document.getElementById("fun").value)
+        let cont = 1
+        let salário = 0
+        let total = 0
+        let maior = 0
+        let menor = 0
+        let num = 0
+        let nome = 0
+        while (cont <= func) {
+            salário = Number(prompt(`Qual é o salário do funcionário?`))
+            total += salário
+            if (cont == 1) {
+                salário = maior
+                salário = menor 
+                num = cont 
+            } else {
+                if (salário < maior) {
+                    salário = maior
+                    num = cont
+                } else if (salário > menor) {
+                    salário = menor
+                    num = cont
+                }
+            }
+            cont ++
+        }
+        res.innerHTML = `Os salários dos funcionários que estão cadastrados, a empresa que vai gastar ${total} , a média salarial é ${total/num } , o funcionário com o maior salário pago foi ${maior} e o menor salário foi ${menor}`
+        return false
+    }
+</script>
+</body>
+</html>

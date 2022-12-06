@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Textos, números e formulários</h1>
+        <form action="queijo.php" method="get" onsubmit="return pret()">
+        <label for="nome">Qual é o seu primeiro nome?</label>
+        <input type="text" name="nome" id="nome" maxlength="28" placeholder="Digite o seu primeiro nome">
+        <br><input type="submit" value="Verificar">
+        </form>
+        <p id="oo">Aqui vai aprecer...</p>
+    </main>
+    <script>
+        let ooo = document.getElementById("ooo")
+        ooo.style.visibility = "hidden"
+        function pret() {
+            let nome = document.getElementById("nome").value
+            ooo.style.visibility = "visible"
+            ooo.innerHTML = `Ola ${nome}, é um prazer em te conhecer`
+            return false
+        }
+    </script>
+</body>
+</html>

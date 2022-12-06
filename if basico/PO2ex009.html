@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="aaa">
+        <h1>Promoção Dia das mulheres</h1>
+        <p>No dia internacional das mulheres estamos dando desconto em todas as compras, mas as mulheres ganham um desconto maior(15%) do que os homens(10%).</p>
+        <form action="q.php" method="get" onsubmit="return des()">
+        <label for="valor">Valor da compra:</label>
+        <input type="number" name="valor" id="valor" min="1" max="10000" value="0" step="0.5">
+        <fieldset>
+            <legend>Sexo</legend>
+            <input type="radio" name="sexo" id="masc" onchange="mudasexo()">
+            <label for="masc">Masculino</label>
+            <input type="radio" name="sexo" id="fem" onchange="mudasexo()">
+            <label for="fem">Feminino</label>
+        </fieldset>
+        <br><input type="submit" value="Clacular desconto">
+        </form>
+        </section>
+        <section id="saida">
+            <h2>Valor com desconto</h2>
+            <p id="a">Resultado</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let a = document.getElementById("a")
+        let sexo = document.getElementsByName("sexo")
+        saida.style.visibility = "hidden"
+
+        function fechar() {
+            saida.style.visibility = "hidden"
+        }
+        function des() {
+            let valor = Number(document.getElementById("valor").value)
+            let taxa = 0
+            if(sexo[0].checked) {
+                taxa = 10
+            } else {
+                taxa = 15
+            }
+            let desc = (valor * taxa) / 100
+            let novo = valor - desc
+            a.innerHTML = `A sua compra R$${valor} vai ter ${taxa}% de desconto. No fim, você <strong>pagará apenas  R$${novo.toFixed(2)}</strong>`
+            saida.style.visibility = "visible"
+            return false
+        }
+        function mudasexo() {
+            if(sexo[0].checked){
+                document.body.style.backgroundColor = "steelblue"
+            } else {
+                document.body.style.backgroundColor = "palevioletred"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: brown;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Mais velho e mais jovem</h1>
+            <button onclick="iniciar()">Iniciar</button>
+        </section>
+        <section id="saida">
+            <h2>Resultado</h2>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let msg = document.getElementById("mensagem")
+        function iniciar() {
+            let nome, idade, idadenum
+            let jovem, velho, nomejovem, nomevelho
+            let quant = 0
+            do{
+                while(true){
+                nome = prompt(`Qual é o nome da ${quant+1} pessoa?`).trim()
+                if(nome == "") {
+                    alert("Não deixe a caixa em branco")
+                } else if(!isNaN(nome)){
+                    alert("digite um nome, não um número")
+                } else {
+                    break
+                }
+            }
+            while(true) {
+                idade = prompt(`Qual a idade do ${quant+1}?`).trim()
+                idadenum = Number(idade)
+                if(idade == "") {
+                    alert("Não deixe a caixa vazia")
+                } else if(isNaN(idade)) {
+                    alert("É para digitar um número, não um texto")
+                } else if(idade < 1 || idade > 150) {
+                    alert("Digite uma idade entre 1 e 150")
+                } else{
+                    break
+                }  
+            }
+            quant ++
+            if(quant == 1){
+                jovem = idadenum
+                nomejovem = nome
+                velho = idadenum
+                nomevelho = nome
+            } else {
+                if(idadenum < jovem) {
+                    jovem = idadenum
+                    nomejovem = nome
+                } else if(idadenum > velho) {
+                    velho = idadenum
+                    nomevelho = nome
+                }
+            }
+            continua = confirm("Cadastrar mais pessoas?")
+            } while(continua == true)
+            msg.innerHTML += `<li>Ao todo, tivemos no total de pessoas cadastradas ${quant}.</li>`
+            msg.innerHTML += `<li>A pessoa mais jovem é ${nomejovem}, com ${jovem}.</li>`
+            msg.innerHTML += `<li>A pessoa mais velha é ${nomevelho}, com ${velho}.</li>`
+        }
+    </script>
+</body>
+</html>

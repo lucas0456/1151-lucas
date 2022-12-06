@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+    <section id="formulário">
+        <h1>Identifique-se</h1>
+        <form action="t.php" method="get" onsubmit="return idade()">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" maxlength="25" placeholder="Apenas o primeiro nome">
+
+        <label for="nasc">Ano de nascimento</label>
+        <input type="number" name="nasc" id="nasc" min="1000" max="2021" value="1000">
+
+        <input type="submit" value="Analisar">
+        </form>
+    </section>
+    <section id="resultado">
+        <h2>Resultado da análise</h2>
+        <p id="f">Resultado..</p>
+        <button onclick="fechar()">Fechar</button>
+    </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        let f = document.getElementById("f")
+        function fechar() {
+            res.style.visibility = `hidden`
+        }
+        function idade() {
+            let calend = new Date()
+            let ano = calend.getFullYear()
+            let nome = document.getElementById("nome").value
+            let nasc = Number(document.getElementById("nasc").value)
+            let idade = ano-nasc
+            res.style.visibility = `visible`
+            f.innerHTML = `${nome} nasceu em ${ano}, vai fazer ${idade} anos até o fim de ${ano}.`
+            return false
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="formulário">
+        <h1>Pare de fumar</h1>
+        <p>Cigarro Mata! Segundo uma pesquisa, cada cigarro fumado reduz 10min de vida de um ser humano. Vamos fazer a conta?</p>
+        <form action="q.php" method="get" onsubmit="return fumar()">
+        <br><label for="dia">Quantos cigarros você fumar por dia?</label>
+        <input type="number" name="dia" id="dia" min="0" max="50" value="1" step="0,3">
+
+        <br><label for="anos">Fumante há quantos anos?</label>
+        <input type="number" name="anos" id="anos" min="0" max="50" value="1" step="0,3">
+
+        <br><input type="submit" value="Calcular">
+        </form>
+        </section>
+        <section id="resultado">
+            <h2>Calculo da morte</h2>
+            <p id="morte">Resultado...</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        let morte = document.getElementById("morte")
+        res.style.visibility = "hidden"
+        function fechar() {
+            res.style.visibility = "hidden"
+        }
+        function fumar() {
+            let dia = Number(document.getElementById("dia").value)
+            let anos = Number(document.getElementById("anos").value)
+
+            let co = anos * 365 * dia
+            let novo = co / 60
+            let i = novo / 24
+
+            res.style.visibility = "visible"
+
+            morte.innerHTML = `Uma pessoa que fuma ${dia} por dia, há ${anos} anos já perdeu ${novo.toFixed(1)} horas de vida! Isso  corresponde a ${i.toFixed(1)} dias a menos.`
+            return false
+        }
+    </script>
+</body>
+</html>

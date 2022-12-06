@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: yellow;
+            font-size: 1em;
+            text-align: center;
+        }
+        main {
+            max-height: 500px;
+            margin: auto;
+            max-width: 700px;
+        }
+        section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="formulário">
+            <h1>Controle de estacionamento</h1>
+            <p>Que horas o cliente entrou no estacionamento?</p>
+            <form action="e.php" method="get" onsubmit="return est()">
+            <br><label for="entrada">Entrada às</label>
+            <input type="number" name="entrada" id="entrada" min="1" max="23" value="10">
+            <input type="number" name="entra" id="entra" min="1" max="57" value="30">
+
+            <br><label for="valor">Valor por 30 min R$</label>
+            <input type="number" name="valor" id="valor" min="4" max="12" value="5" step="0.5">
+
+            <br><input type="submit" value="Calcular preço">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2>Calculo do estacionamento</h2>
+            <p id="ho1">Horário de entrada:</p>
+            <p id="ho2">Horário de saída:</p>
+            <p id="ho3">Tempo de permanência:</p>
+            <p id="ho4">Valor a pagar:</p>
+        </section>
+    </main>
+    <script>
+        let ho1 = document.getElementById("ho1")
+        let ho2 = document.getElementById("ho2")
+        let ho3 = document.getElementById("ho3")
+        let ho4 = document.getElementById("ho4")
+
+        let calend = new Date()
+
+        function est() {
+            let h = Number(document.getElementById("entrada").value)
+            let m = Number(document.getElementById("entra").value)
+            let valor = Number(document.getElementById("valor").value)
+            let hs = calend.getHours()
+            let ms = calend.getMinutes()
+            ho1.innerHTML = `Horário de entrada: ${h} : ${m}`
+            ho2.innerHTML = `Horário de saída: ${hs} : ${ms}`
+
+            let tempo = (hs - h) * 60 + Math.abs(ms - m)
+            ho3.innerHTML = `Tempo de permanência: ${tempo} min`
+
+            let preco = Math.round(tempo/30) * valor
+            ho4.innerHTML = `Valor a pagar: R$${preco.toFixed(2)}`
+            return false
+
+        }
+    </script>
+</body>
+</html>

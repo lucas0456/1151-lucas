@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        } main {
+            max-width: 300px;
+            padding: auto;
+            margin: auto;
+        } section {
+            background-color: lightgray;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+        } h1 {
+            text-align: center;
+        } form {
+            width: 190px;
+            margin: auto;
+        } img {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="formulário">
+        <h1>termômetro</h1>
+        <form action="e.php" method="get">
+            <input type="range" name="tempo" id="tempo" min="0" max="100" value="30" oninput="mudatempo()">
+            <label for="tempo" id="valor">30<sup>o</sup>C</label>
+        </form>
+        <br><img src="imagens/03-smiling.png" alt="emoji">
+        </section>
+    </main>
+    <script>
+        function mudatempo() {
+            let tempo = Number(document.getElementById("tempo").value)
+            let valor = document.getElementById("valor")
+            let foto = document.getElementById("emoji")
+            valor.innerHTML = `${tempo}<sup>o</sup>C`
+            if (tempo <= 10) {
+                foto.src = "imagens/01-ice.png"
+            } else if (tempo <= 25) {
+                foto.src = "imagens/02-cold.png"
+            } else if (tempo <= 45) {
+                foto.src = "imagens/03-smiling.png"
+            } else if (tempo <= 80) {
+                foto.src = "imagens/04-hot.png"
+            } else {
+                foto.src = "imagens/05-fire.png"
+            }
+        }
+    </script>
+</body>
+</html>

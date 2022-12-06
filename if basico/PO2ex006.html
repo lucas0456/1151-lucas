@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+        <h1>É divisível?</h1>
+        <form action="u.php" method="get" onsubmit="return n()">
+        Será que o número
+        <input type="number" name="n1" id="n1" min="0" max="100" value="1">
+        é dividido por
+        <input type="number" name="n2" id="n2" min="0" max="100" value="1">?
+        <br><input type="submit" value="Verificar">
+        </form>
+        </section>
+        <section id="saida">
+            <h2>Resultado</h2>
+            <p id="r">Resultado</p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let r = document.getElementById("r")
+        saida.style.visibility = "hidden"
+        function n() {
+            let n1 = Number(document.getElementById("n1").value)
+            let n2 = Number(document.getElementById("n2").value)
+
+            let divisao = Math.floor(n1 / n2)
+            let resto = n1 % n2
+            
+            if(resto == 0) {
+                r.innerHTML = `O númuro ${n1} é disivel por ${n2}`
+            } else {
+                r.innerHTML = `O número ${n1} não é disivel por ${n2}` 
+            }
+            r.innerHTML += `, já que ${n1} % ${n2} = ${divisao} e com resto ${resto}.`
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

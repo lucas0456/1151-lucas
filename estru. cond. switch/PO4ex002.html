@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Estações do ano</h1>
+            <form action="r.php" method="get" onsubmit="return ano()">
+            <label for="mes">Escolha o mês atual:</label>
+            <select name="mes" id="mes">
+                <option value="j1">Janeiro</option>
+                <option value="f">Fevereiro</option>
+                <option value="m1">Março</option>
+                <option value="a1">Abril</option>
+                <option value="m2">Maio</option>
+                <option value="j2">Julho</option>
+                <option value="j3">Junho</option>
+                <option value="a2">Agosto</option>
+                <option value="s">Setembro</option>
+                <option value="o">Outubro</option>
+                <option value="n">Novembro</option>
+                <option value="d">dezembro</option>
+            </select>
+            <input type="submit" value="Ver estação">
+            </form>
+        </section>
+        <section id="saida">
+            <h1 id="titulo"></h1>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let tit = document.getElementById("titulo")
+        saida.style.visibility = "hidden"
+
+        function ano() {
+            let mes = document.getElementById("mes").value
+            switch(mes) {
+                case "j1":
+                case "f":
+                case "m1":
+                tit.innerHTML = `Estamos no verão`
+                break
+                case "a1":
+                case "m2":
+                case "j2":
+                tit.innerHTML = `Estamos no outono`
+                break
+                case "j3":
+                case "a2":
+                case "s":
+                tit.innerHTML = `Estamos no inverno`
+                break
+                case "o":
+                case "n":
+                case "d":
+                tit.innerHTML = `Estamos na primavera`
+                break
+            }
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

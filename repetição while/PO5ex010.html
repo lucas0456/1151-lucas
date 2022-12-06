@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lendo e somando vários números</h1>
+    <button onclick="somado()">Iniciar leitura</button>
+    <p id="resposta"></p>
+    <script>
+        let res = document.getElementById("resposta")
+
+        function somado() {
+            let num = 0
+            let soma = 0
+            let cont = 1
+            while(cont <= 5) {
+                num = Number(prompt(`Digite o ${cont}: número acumelada até aqui: ${soma}.`))
+                soma += num
+                cont ++
+            }
+            res.innerHTML = `A soma de todos os números digitados é igual a ${soma}.`
+        }
+    </script>
+</body>
+</html>

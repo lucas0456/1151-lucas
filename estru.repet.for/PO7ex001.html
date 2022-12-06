@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Contando de 1 a 10</h1>
+        <button onclick="aperte()">Aperte aqui</button>
+        <p id="mensagem">A contagem vai aperecer aqui...</p>
+    <script>
+        function aperte() {
+            let num = document.getElementById("mensagem")
+            num.innerHTML = ``
+
+            for(let n = 1; n <= 10; n++) {
+                num.innerHTML += `${n}&#x2192;`
+            }
+            num.innerHTML += `fim`
+        }
+    </script>
+</body>
+</html>

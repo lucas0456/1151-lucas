@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de pessoas</h1>
+    <button onclick="cas()">Iniciar cadastro</button>
+    <p id="mensagem">A lista de pessoas vai aparecer aqui...</p>
+    <script>
+        let pessoas = new Array()
+        let msg = document.getElementById("mensagem")
+        function cas() {
+            let nome = ""
+            let resp = ""
+            do{
+                nome = prompt("Informe o nome da pessoa")
+                pessoas.push(nome)
+                resp = confirm("Quer continuar?")
+            } while (resp == true)
+            msg.innerHTML = `As pessoa(s) cadastradas foram ${pessoas.toString()}.`
+        }
+    </script>
+</body>
+</html>

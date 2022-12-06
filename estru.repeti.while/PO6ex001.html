@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: burlywood;
+        } main {
+            max-width: 550px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Leitura de dado sem limite</h1>
+            <br><button onclick="iniciar()">Iniciar</button>
+        </section>
+        <section id="saida">
+            <h2>Resultado</h2>
+            <p id="resultado">O resultado vai apaerecer aqui...</p>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+
+        function iniciar() {
+            let num, continuar, soma = 0
+            res.innerHTML = `Os valores digitados foram `
+            let quant = 0
+            do {
+                num = Number(prompt(`Digite o ${quant + 1} número`))
+                soma += num
+                res.innerHTML += `${num} &#x2192; ` 
+
+                quant ++
+                continuar = confirm("Quer ler mais um número?")
+            } while(continuar == true)
+            res.innerHTML += `&#x1F3C1;<br>ao todo vc digitou ${quant} número(s). <br>E a soma é ${soma}.`
+        }
+    </script>
+</body>
+</html>

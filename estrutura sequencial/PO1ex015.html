@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="kk">
+        <h1>Reajuste salárial</h1>
+        <p>Uma empresa precisa de ajuda para calcular os novos salários dos seus funcionários, que receberão um aumento de 5%, 10% e 20%.</p>
+        <form action="requeijão.php" method="get" onsubmit="return salário()">
+        <label for="nome">Nome do funcionário</label>
+        <input type="text" name="nome" id="nome">
+
+        <label for="salá">Salário R$</label>
+        <input type="number" name="salá" id="salá" min="1100" max="20000" value="1100" step="0.5">
+
+        <label for="rea">Reajuste</label>
+        <select name="rea" id="rea">
+            <option value="5">5% de aumento</option>
+            <option value="10">10% de aumento</option>
+            <option value="20">20% de aumento</option>
+        </select>
+        <input type="submit" value="Reajuste">
+        </form>
+        </section>
+        <section id="Resultado">
+            <h2>Novo salário do funcionário</h2>
+            <p id="f">resultado...</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("Resultado")
+        let f = document.getElementById("f")
+        res.style.visibility = "hidden"
+        function fechar() {
+            res.style.visibility = "hidden"
+        }
+        function salário() {
+            let nome = document.getElementById("nome").value
+            let salá = Number(document.getElementById("salá").value)
+            let rea = Number(document.getElementById("rea").value)
+
+            let aum = salá * rea/100
+            let novo = salá + aum
+            res.style.visibility = "visible"
+            
+            f.innerHTML = `O funcionário ${nome} tinha um salário de ${salá}. Com um aumento de ${rea}%, o salário vai aumentar ${aum} e vai passar a ser de ${novo} `
+            return false
+        }
+    </script>
+</body>
+</html>

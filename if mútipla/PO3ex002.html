@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="b">
+            <h1>Situação do aluno(a)</h1>
+            <p>Alunos possuem sua definida pela média entre as notas. Consulte a lista a seguir:</p>
+            <ul>
+                <li>Média abaixo de 4,0: aluno <span class='tipo1'>REPROVADO</span></li>
+                <li>Média entre 4,0 e 6,9: aluno <span class='tipo2'>EM RECUPERAÇÃO</span></li>
+                <li>Média 7,0 ou superior: aluno <span class='tipo3'>APROVADO</span></li>
+            </ul>
+            <h2>Dados do aluno</h2>
+            <form action="y.php" method="get" onsubmit="return nota()">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" placeholder="Nome do aluno" maxlength="20" size="20">
+            <label for="n1">Nota 1</label>
+            <input type="number" name="n1" id="n1" min="0" max="10" value="0" step=".5">
+            <label for="n2">Nota 2</label>
+            <input type="number" name="n2" id="n2" min="0" max="10" value="0" step=".5">
+            <br><input type="submit" value="Calcular">
+            </form>
+        </section>
+        <section id="a">
+            <h2>Situação do aluno(a)</h2>
+            <p id="i">Resultado</p>
+        </section>
+    </main>
+    <script>
+        let a = document.getElementById("a")
+        let i = document.getElementById("i")
+        a.style.visibility = "hidden"
+        function nota() {
+            let nome = document.getElementById("nome").value
+            let no1 = Number(document.getElementById("n1").value)
+            let no2 = Number(document.getElementById("n2").value)
+            let media = (no1 + no2) / 2
+            let nota = ""
+            if (media < 4) {
+                nota = "<span class='tipo1'>REPROVADO</span>"
+            } else if (media >= 4 && media < 7) {
+                nota = "<span class='tipo2'>EM RECUPERAÇÃO</span>"
+            } else if (media >= 7) {
+                nota = "<span class='tipo3'>APROVADO</span>"
+            }
+            i.innerHTML = `O aluno(a) ${nome} obteve média ${media} e por conta disso está ${nota}`
+            a.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

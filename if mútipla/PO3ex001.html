@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="ll">
+            <h1>Maior, menor ou igual?</h1>
+            <p>Coloque dois números no formulário abaixo e vamos analisá-los e compará-los em entre si.</p>
+            <form action="q.php" method="get" onsubmit="return nume()">
+            <label for="n1">Número 1:</label>
+            <input type="number" name="n1" id="n1" min="-1000" max="1000" value="0">
+            <label for="n2">Número 2:</label>
+            <input type="number" name="n2" id="n2" min="-1000" max="1000" value="0">
+            <input type="submit" value="Comparar">
+            </form>
+        </section>
+        <section id="resultado">
+            <h2 id="z">Resultado</h2>
+            <p id="s">Resultado</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let resultado = document.getElementById("resultado")
+        let z = document.getElementById("z")
+        let s = document.getElementById("s")
+        res.style.visibility = "hidden"
+        function fechar() {
+            resultado.style.visibility = "hidden"
+        }
+        function nume() {
+            let n1 = Number(document.getElementById("n1").value)
+            let n2 = Number(document.getElementById("n2").value)
+            z.innerHTML = `Comparando os valores ${n1} e ${n2}`
+                if (n1 > n2) {
+                    s.innerHTML = `Os valor ${n1} é maior que ${n2}.`
+                } else if (n1 < n2) {
+                    s.innerHTML = `O valor ${n1} é menor que ${n2}.`
+                } else if (n1 == n2) {
+                    s.innerHTML = `Os dois valores são iguais.`
+                }
+                resultado.style.visibility = "visible"
+                return false
+        }
+    </script>
+</body>
+</html>

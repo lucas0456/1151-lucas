@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+        <h1>descubra seus horáios</h1>
+        <form action="z.php" method="get" onsubmit="return horario()">
+        <label for="turno">Escolha seu turno</label>
+        <select name="turno" id="turno">
+            <option value="m">manhã</option>
+            <option value="t">tarde</option>
+            <option value="n">noite</option>
+        </select>
+        <input type="submit" value="Ver os horários">
+        </form>
+        </section>
+        <section id="saida">
+            <h1 id="a"></h1>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let tit = document.getElementById("a")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+
+        function horario() {
+            let turno = document.getElementById("turno").value
+
+            switch (turno) {
+                case "m":
+                tit.innerHTML = `Horário para manhã`
+                msg.innerHTML = `Das 7h até as 12h da manhã`
+                break
+                case "t":
+                tit.innerHTML = `Horário para tarde`
+                msg.innerHTML = `Das 12h até as 18h da tarde`
+                break
+                case "n":
+                tit.innerHTML = `Horário para noite`
+                msg.innerHTML = `Das 18h até as 23h`
+                break
+                default:
+                tit.innerHTML = `Turno inválido`
+                msg.innerHTML = `Por favor, escolha um turno correto e tente novamente.`
+                break
+            }
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

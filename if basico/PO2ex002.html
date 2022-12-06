@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Quem pode votar no Brasil?</h1>
+        <p>No Brasil, o cidadão tem direito a votar se tem 16 anos ou mais(opcional ou obrigadório, dependeno da faixa etária).</p>
+        <form action="i.php" method="get" onsubmit="return voto()">
+        <label for="ano">Em que ano você nasceu?</label>
+        <input type="number" name="ano" id="ano" min="1900" max="2021" value="2000">
+        <input type="submit" value="Verificar">
+        </form>
+        <p id="resposta">Será que você tem direito a voto?</p>
+    </main>
+    <script>
+        let resp = document.getElementById("resposta")
+        function voto() {
+            let calend = new Date()
+            let hoje = calend.getFullYear()
+            let ano = Number(document.getElementById("ano").value)
+            let idade = hoje - ano
+
+            resp.innerHTML = `Quem nasceu em ${ano} fará ${idade} anos em ${hoje}.`
+
+            if (idade >= 16) {
+                resp.innerHTML += `Com essa idade, o cidadão tem direito a voto!`
+            } else {
+                resp.innerHTML += `Com essa idade, o cidadão ainda não pode votar!`
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

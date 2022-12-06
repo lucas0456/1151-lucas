@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="formulário">
+            <h1>Quanta tinta devo comprar?</h1>
+            <p>Coloque a seguir  as dimeções da parede e eu vou calcular quantos litros de tinta você precisa comprar, sabendo que cada litro consegue cobrir uma área de 2m <sup>2<sup>.</sup></sup></p>
+            <form action="salva.php" method="get" onsubmit="return caltinta()">
+                <label for="larg">Largura</label>
+                <input type="number" name="larg" id="larg" min="1" max="100" value="1">m
+
+                <label for="alt">Altura</label>
+                <input type="number" name="alt" id="alt" min="1" max="100" value="1">m
+
+                <br><input type="submit" value="Calcular">
+            </form>
+        </section>
+        <section id="Resultado">
+            <h2>Cálculo de tinta</h2>
+            <p id="re">Resultado</p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("Resultado")
+        let re = document.getElementById("re")
+        res.style.visibility = "hidden"
+
+        function fechar() {
+            res.style.visibility = "hidden"
+        }
+        function caltinta() {
+            let larg = Number(document.getElementById("larg").value)
+            let alt = Number(document.getElementById("alt").value)
+            let area = larg * alt
+            re.innerHTML = `Uma parede com ${larg}x${alt} metros vai ter uma área de ${area}m<sup>2<sup>.`
+            let tinta = area/2
+            re.innerHTML += `<p>Para cobrir essa área, será necessário um total de ${tinta} litros  de tinta.`
+            res.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

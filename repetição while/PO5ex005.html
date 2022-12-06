@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contador inteligente</h1>
+    <br><p>Este contador inteligente vai conseguir perceber se a contagem a ser feita é crescente ou regressiva</p>
+    <button onclick="aperte()">Aperte aqui</button>
+    <br><p id="numeros">A contagem vai aparecer aqui...</p>
+    <script>
+        function aperte() {
+            let num = document.getElementById("numeros")
+            let início = Number(prompt("A contagem começa em..."))
+            let fim = Number(prompt("A contagem terminar em..."))
+            let passo = Number(prompt("Qual vai ser o valor do salto?"))
+            if(passo == 0) {
+                passo = 1
+            }
+            if(passo < 0) {
+                passo = passo * (-1)
+            }
+            num.innerHTML = `Fazendo a contagem de ${início} até ${fim} pulando em ${passo}: <br><br>`
+            if(início < fim) {
+                let n = início
+                while(n <= fim){
+                    num.innerHTML += `${n} &#x2192;`
+                    n += passo
+                }
+            } else if(início > fim) {
+                let n = início
+                while(n >= fim) {
+                    num.innerHTML += `${n} &#x2192;`
+                    n -= passo
+                }
+            }
+            num.innerHTML += `fim`
+        }
+    </script>
+</body>
+</html>

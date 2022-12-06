@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="sorteianum()">
+    <main>
+        <section id="entrada">
+            <h1>Tente me vencer</h1>
+            <p>acabei de pensar em um número mágico entre 1 a 50. Vou te dar 10 chances para tentar me vencer</p>
+            <form action="q.php" method="get" onsubmit="return ten()" onreset="return restart()">
+            <label for="palpite" id="frase">Tentativa 1:</label>
+            <input type="number" name="palpite" id="palpite" min="1" max="50">
+            <input type="submit" value="Palpite" id="btnjogar">
+            <input type="reset" value="Recomeçar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Resposta do computador</h2>
+            <p id="resposta"></p>
+        </section>
+    </main>
+    <script>
+        let mágico = 0
+        let chances = 10
+        let tentativas = 1
+        
+        let frase = document.getElementById("frase")
+        let btnjogar = document.getElementById("btnjogar")
+        let resp = document.getElementById("resposta")
+
+        function sorteianum() {
+            mágico = Math.floor(Math.random() * 50 + 1)
+            tentativas = 1
+            frase.innerHTML = `Tentativa ${tentativas}:`
+        }
+        function ten() {
+            let palpite = Number(document.getElementById("palpite").value)
+            if (palpite == mágico) {
+                resp.innerHTML = `Parabéns! Você acaba de acertar  o número! Eu tinha pensador no valor ${mágico}.Você acertou depois de ${tentativas} tentativa(s)!`
+                btnjogar.style.visibility = " hidden"
+            } else {
+                if (mágico < palpite) {
+                    resp.innerHTML = `Você ainda não acertou! Mas o número que eu pensei é menor que ${palpite}! Você ainda tem ${chances - tentativas} chances!`
+                } else if (mágico > palpite) {
+                    resp.innerHTML = `Não foi dessa vez ainda! Mas o número que eu pensei é maior que ${palpite}! Você ainda tem ${chances - tentativas} chances!`
+                }
+                tentativas ++
+                frase.innerHTML = `Tentativas ${tentativas}:`
+            }
+            if (tentativas >= chances) {
+                resp.innerHTML = `Fim de jogo! Infelizmente você não consiguiu descobrir o número que eu pensei! Era o valor ${mágico}!`
+                btnjogar.style.visibility = "hidden"
+            }
+            return false
+        }
+        function restart() {
+            resp.innerHTML = `Jogo Reiniciado! já pensei em outro número`
+            btnjogar.style.visibility = "visible"
+            sorteianum()
+            return false
+        }
+    </script>
+</body>
+</html>

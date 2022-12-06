@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.1em;
+            background-color: gray;
+        } main{
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 1px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Somado</h1>
+            <form action="z.php" method="get" onsubmit="return soma()">
+            <label for="ini">Valor incial (menor)</label>
+            <input type="number" name="ini" id="ini" min="-10" max="10" value="0">
+            <label for="fin">Valor final (maior)</label>
+            <input type="number" name="fin" id="fin" min="-10" max="10" value="10">
+            <br><input type="submit" value="Somar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Resultado da soma</h2>
+            <p id="msg"></p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let msg = document.getElementById("msg")
+        saida.style.visibility = "hidden"
+        function soma() {
+            let i = Number(document.getElementById("ini").value)
+            let f = Number(document.getElementById("fin").value)  
+            if(i > f) {
+                alert("O primeiro número tem que ser maior que o segundo")
+            } else {
+                msg.innerHTML = `Total = `
+                let c = i
+                let s = 0
+                while(c <= f) {
+                    msg.innerHTML += `${c}`
+                    if(c != f) {
+                        msg.innerHTML += `+`
+                    }
+                    s += c
+                    c ++
+                }
+                msg.innerHTML += `= <strong>${s}</strong>`
+                saida.style.visibility = "visible"
+            }           
+            return false                           
+        }
+    </script>
+</body>
+</html>

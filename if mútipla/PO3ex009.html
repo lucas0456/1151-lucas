@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Super reajuste salárial</h1>
+            <p>Uma empresa quer implementar o novo plano de reajuste salárial</p>
+            <ul>
+            <li>Homens</li>
+                <ul>
+                    <li>menos de 20 anos: +5%</li>
+                    <li>de 20 a 30 anos: +13%</li>
+                    <li>mais de 30 anos: +25%</li>
+                </ul>
+            <li>Mulheres</li>
+                <ul>
+                    <li>menos de 15 anos: +7%</li>
+                    <li>de 15 até 20 anos: +15%</li>
+                    <li>mais de 20 anos: +26%</li>
+                </ul>
+            </ul>
+            <h2>Dados do funcionário</h2>
+            <form action="z.php" method="get" onsubmit="return sala()">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" maxlength="40" size="40" placeholder="Nome completo">
+            <label for="ano">Ano da contratação</label>
+            <input type="number" name="ano" id="ano" min="1990" max="2021" value="2010">
+            <label for="sa">Salário atual R$</label>
+            <input type="number" name="sa" id="sa" min="1100" max="10000" value="1100" step=".5">
+            <fieldset>
+                <legend>Sexo</legend>
+                <input type="radio" name="sexo" id="mas" value="M" checked><label for="mas">Masculino</label>
+                <input type="radio" name="sexo" id="fem" value="M"><label for="fem">Feminino</label>
+            </fieldset>
+            <input type="submit" value="Reajustar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Cálculo do novo salário</h2>
+            <p id="mensagem"></p>
+            <button onclick="fechar()">Fechar</button>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let msg = document.getElementById("mensagem")
+        saida.style.visibility = "hidden"
+        function fechar() {
+            saida.style.visibility = "hidden"
+        }
+        function sala() {
+            let nome = document.getElementById("nome").value
+            let ano = Number(document.getElementById("ano").value)
+            let sa = Number(document.getElementById("sa").value)
+            let sexo = document.getElementsByName("sexo")
+
+            let calend = new Date()
+            let tempo = calend.getUTCFullYear() - ano
+            let porc = 0
+            if (sexo[0].checked) {
+                msg.innerHTML = `O funcionário ${nome}`
+                if (tempo < 20) {
+                    porc = 5
+                } else if (tempo >= 20 && tempo <= 30) {
+                    porc = 13
+                } else if (tempo > 30) {
+                    porc = 25
+                }
+            } else if (sexo[1].checked) {
+                msg.innerHTML = `A funcionária ${nome}`
+                if (tempo < 15) {
+                    porc = 7
+                } else if (tempo >= 15 && tempo <= 20) {
+                    porc = 15
+                } else if (tempo > 20) {
+                    porc = 26
+                }
+            }
+            let aum = sa * porc / 100
+            let nsa = sa + aum
+
+            msg.innerHTML += `recebe atualmente  um salário de R$${sa}. Pelas novas regras e por ter ${tempo} anos de empresa, vai recebe um aumento de ${porc}%
+            e vai passar a ganhar a mais R$${aum} por mês, um novo salário de R$${nsa}.`
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <header>
+        <h1>Classifique seu terreno</h1>
+        </header>
+        <section id="entrada">
+            <h2>Medidas do terreno</h2>
+            <form action="u.php" method="get" onsubmit="return ter()">
+            <br><label for="lagu">lagura: </label>
+            <input type="number" name="lagu" id="lagu" min="1" max="500" value="0" step="0.1" oninput="calc_area()">m
+            <label for="com">Comprimento: </label>
+            <input type="number" name="com" id="com" min="1" max="500" value="0" step="0.1" oninput="calc_area()">m
+            <label for="area">Área: </label>
+            <input type="number" name="area" id="area" value="0" readonly>m<sup>2</sup>
+            <input type="submit" value="Analisar">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Tipo de tereno</h2>
+            <p id="mensagem">Preenchar o formulário acima para uma análise completa.</p>
+        </section>
+    </main>
+    <script>
+        let msg = document.getElementById("mensagem")
+        let area = document.getElementById("area")
+        function calc_area() {
+            let l = Number(document.getElementById("lagu").value)
+            let c = Number(document.getElementById("com").value)
+            let a = l * c
+            area.value = a.toFixed(2)
+        }
+        function ter() {
+           let a = Number(area.value)
+           msg.innerHTML = `Uma área total de ${a.toFixed(2)}m<sup>2</sup> é classificada como`
+           if (a < 100) {
+               msg.innerHTML += `<span class='destaque'>Terreno popular</span>` 
+           } else if (a >= 100 && a < 500) {
+               msg.innerHTML += `<span class='destaque'>Terreno master</span>` 
+           } else if (a >= 500 && a < 1000) {
+               msg.innerHTML += `<span class='destaque'>Terreno vip</span>`
+           } else {
+               msg.innerHTML += `<span class='destaque'>Terreno intrusdrial</span>`
+           }
+           return false
+        }
+    </script>
+</body>
+</html>

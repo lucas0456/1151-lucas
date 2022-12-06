@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            background-color: yellow;
+        } main {
+            max-width: 500px;
+            margin: auto;
+        } section {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Cadastro de funcionário</h1>
+            <button onclick="iniciar()">Iniciar</button>
+        </section>
+        <section id="saida">
+            <h2>Resultado</h2>
+            <p id="resultado"></p>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("resultado")
+        function iniciar() {
+            let sal, salnum, sexo
+            let totM = 0, totF = 0, somaM = 0, somaF =0
+            let quant = 0
+            let continuar
+            do{
+                while(true){
+                    sal = prompt(`Salário do ${quant+1}o. funcionário`).trim()
+                    salnum = Number(sal)
+                    if(sal == "") {
+                        alert("Não deixe a caixa vazia")
+                    } else if(isNaN(sal)) {
+                        alert("Digite um salário válido, não um texto")
+                    } else if(salnum < 1100) {
+                        alert("O funcionário tem que ter um salário mínimo")
+                    } else {
+                        break
+                    }
+                }
+                while(true) {
+                    sexo = prompt(`Sexo do ${quant+1}o. funcionário`).toUpperCase().trim()
+                    if (sexo.trim() == "") {
+                        alert("Não deixa a caixa vazia")
+                    } else if (!isNaN(sexo)) {
+                        alert("Digite apenas M ou F")
+                    } else if (sexo != "M" && sexo != "F") {
+                        alert("Apenas os valores M e F são válidos")
+                    } else {
+                        break
+                    }
+                }
+                quant ++
+                if (sexo == "M") {
+                    totM ++
+                    somaM += salnum
+                } else if (sexo == "F") {
+                    totF ++
+                    somaF += salnum
+                }
+                continuar = confirm("Cadastrar mais funcionários?")
+            } while (continuar == true)
+            let saltotal = somaM + somaF
+            let medM = 0, medF = 0
+            if (totM != 0) {
+                medM = somaM / totM
+            }
+            if (totF != 0) {
+                medF = somaF / totF
+            }
+            res.innerHTML += `<li>Ao todo, tivemos ${totM} homens e ${totF} mulheres cadastrados.</li>`
+            res.innerHTML += `<li>A emprsa paga R$${somaM.toFixed(2)} para os homens, que tem a média salárial de ${medM.toFixed(2)}.</li>`
+            res.innerHTML += `<li>A empresa paga R$${somaF.toFixed(2)} para as mulheres, que tem a média salária de ${medF.toFixed(2)}.</li>`
+            res.innerHTML += `<li>No total, a folha salárial da empresa soma R$${saltotal.toFixed(2)} em salários.</li>`
+        }
+</script>
+</body>
+</html>

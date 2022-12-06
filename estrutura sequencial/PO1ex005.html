@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Textos e Números</h1>
+        <button onclick="aperte()">Aperte aqui</button>
+        <p id="frase">O resultado vai aperecesr aqui...</p>
+    </main>
+    <script>
+        let frase = document.getElementById("frase")
+        function aperte() {
+            let nome = prompt("Qual é o nome do úsuario?")
+            let num = Number(prompt(`Qual é a idade do ${nome}?`))
+            frase.innerHTML = `Óla ${nome}, no seu proximo anivesario vai fazer ${num + 1}`
+        }
+    </script>
+</body>
+</html>

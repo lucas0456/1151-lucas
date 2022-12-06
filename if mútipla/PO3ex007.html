@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: blue;
+            text-align: center;
+            font-size: 1.2em;
+        } main {
+            background-color: white;
+            margin: auto;
+            max-width: 700px;
+            border-radius: 7px;
+        } section {
+            background-color: white;
+            padding: 7px;
+            margin: 7px;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="entrada">
+            <h1>Calculadora de IMC</h1>
+            <p>O Índice de Massa Corporal(IMC) é uma medida internacional usada para calcular se pesssoa está no peso ideal.</p>
+            <form action="e.php" method="get" onsubmit="return imc()">
+            <h2>Calcule seu IMC</h2>
+            <br><label for="peso">Peso</label>
+            <input type="number" name="peso" id="peso" min="1" max="200" value="50" step="0.5">kg
+            <br><label for="altura">Altura</label>
+            <input type="number" name="altura" id="altura" min="0.1" max="2.4" value="1.60" step="0.1">m
+            <br><input type="submit" value="Calcular IMC">
+            </form>
+        </section>
+        <section id="saida">
+            <h2>Cálculo do IMC</h2>
+            <p id="msg">Resultado</p>
+        </section>
+    </main>
+    <script>
+        let saida = document.getElementById("saida")
+        let msg = document.getElementById("msg")
+        saida.style.visibility = "hidden"
+        function imc() {
+            let peso = Number(document.getElementById("peso").value)
+            let altura = Number(document.getElementById("altura").value)
+            let novo = peso / (altura * altura)
+            msg.innerHTML = `Uma pessoa com o peso de ${peso.toFixed(2)}kg e ${altura.toFixed(2)}m de altura tem o imc de ${novo.toFixed(1)}, o que caracteriza uma classificação `
+            if (novo < 18.5) {
+                msg.innerHTML += `<strong>Abaixo do peso</strong>`
+            } else if (novo >= 18.5 && novo < 25) {
+                msg.innerHTML += `<strong>Peso normal</strong>`
+            } else if (novo >= 25 && novo < 30) {
+                msg.innerHTML += `<strong>Sobrepeso</strong>`
+            } else if (novo >= 30 && novo < 35) {
+                msg.innerHTML += `<strong>Obsidade leve</strong>`
+            } else if (novo >= 35 && novo < 40) {
+                msg.innerHTML += `<strong>Obsidade severa</strong>`
+            } else if (novo >= 40) {
+                msg.innerHTML += `<strong>Obsidade mórbida`
+            }
+            saida.style.visibility = "visible"
+            return false
+        }
+    </script>
+</body>
+</html>
